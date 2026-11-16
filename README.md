@@ -80,10 +80,4 @@ assets/sounds/          click, keypad, correct, wrong, background-music
 
 ## Teknologi
 
-HTML, CSS, dan JavaScript vanilla. Tidak ada build step maupun dependensi eksternal.
-
-## Author
-
-**Esa Adya Syawal**
-
-GitHub: https://github.com/esalahterus
+HTML, CSS, dan JavaScript vanilla.
