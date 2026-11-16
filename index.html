@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ngitung Kuy - Aplikasi latihan matematika interaktif untuk anak dan pengguna umum">
+    <title>Ngitung Kuy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/games.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Dashboard View -->
+        <section id="dashboard-view" class="view active" role="main">
+            <header class="app-header">
+                <h1 class="app-title">Ngitung Kuy</h1>
+                <div class="header-actions">
+                    <button id="settings-btn" class="btn-icon" data-i18n-attr="aria-label:app.settings;title:app.settings">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <main class="dashboard-main">
+                <section class="mode-grid" id="mode-grid" role="list" data-i18n-attr="aria-label:dashboard.ariaLabel">
+                    <!-- Mode cards will be dynamically inserted here -->
+                </section>
+            </main>
+
+            <footer class="app-footer">
+                <p data-i18n="dashboard.footer">Ngitung Kuy - Aplikasi latihan matematika interaktif</p>
+            </footer>
+        </section>
+
+        <!-- Mode Intro View -->
+        <section id="mode-intro-view" class="view" role="region" aria-label="Pengenalan mode">
+            <header class="view-header">
+                <button id="back-to-dashboard" class="btn-back" data-i18n-attr="aria-label:app.backDashboard">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <h2 id="mode-intro-title" class="view-title"></h2>
+            </header>
+            <main class="mode-intro-content">
+                <div id="mode-instructions" class="instructions"></div>
+                <div class="mode-settings" id="mode-settings"></div>
+                <button id="start-game-btn" class="btn btn-primary btn-large" data-i18n="app.startGame">Mulai Permainan</button>
+            </main>
+        </section>
+
+        <!-- Gameplay View -->
+        <section id="gameplay-view" class="view" role="region" aria-label="Game area">
+            <header class="game-header">
+                <button id="back-to-mode" class="btn-back" data-i18n-attr="aria-label:app.backMode">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <h2 id="game-title" class="game-title"></h2>
+                <div class="game-header-info" id="game-header-info"></div>
+            </header>
+            <main id="game-area" class="game-area" role="main"></main>
+            <footer class="game-footer">
+                <button id="restart-btn" class="btn btn-secondary" data-i18n-attr="aria-label:app.restart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                        <path d="M3 3v5h5"></path>
+                    </svg>
+                    <span data-i18n="app.restart">Restart</span>
+                </button>
+                <button id="help-btn" class="btn btn-secondary" data-i18n-attr="aria-label:app.help">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </button>
+            </footer>
+        </section>
+
+        <!-- Settings View -->
+        <section id="settings-view" class="view" role="region" data-i18n-attr="aria-label:app.settings">
+            <header class="view-header">
+                <button id="back-from-settings" class="btn-back" data-i18n-attr="aria-label:app.backDashboard">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <h2 class="view-title" data-i18n="app.settings">Pengaturan</h2>
+            </header>
+            <main class="settings-content">
+                <form id="settings-form">
+                    <fieldset>
+                        <legend data-i18n="settings.general">Umum</legend>
+                        <div class="setting-item">
+                            <label for="setting-sound" data-i18n="settings.sound">Suara</label>
+                            <label class="toggle">
+                                <input type="checkbox" id="setting-sound" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label for="setting-music" data-i18n="settings.music">Musik</label>
+                            <label class="toggle">
+                                <input type="checkbox" id="setting-music" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label for="setting-animations" data-i18n="settings.animations">Animasi</label>
+                            <label class="toggle">
+                                <input type="checkbox" id="setting-animations" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label for="setting-theme" data-i18n="settings.theme">Tema</label>
+                            <select id="setting-theme">
+                                <option value="light" data-i18n="settings.light">Terang</option>
+                                <option value="dark" data-i18n="settings.dark">Gelap</option>
+                                <option value="auto" data-i18n="settings.auto">Otomatis</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="setting-language" data-i18n="settings.language">Bahasa</label>
+                            <select id="setting-language">
+                                <option value="id">Indonesia</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </form>
+            </main>
+        </section>
+
+        <!-- Modal Overlay -->
+        <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="modal" id="modal">
+                <div class="modal-header">
+                    <h3 id="modal-title"></h3>
+                    <button class="modal-close" data-i18n-attr="aria-label:app.close">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer" id="modal-footer"></div>
+            </div>
+        </div>
+
+        <!-- Toast Container -->
+        <div id="toast-container" class="toast-container" aria-live="polite"></div>
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/game-engine.js"></script>
+    <script src="js/games/learning.js"></script>
+    <script src="js/games/timed.js"></script>
+    <script src="js/games/time-based.js"></script>
+    <script src="js/games/connect.js"></script>
+    <script src="js/games/puzzle.js"></script>
+    <script src="js/games/min-max.js"></script>
+    <script src="js/games/true-false.js"></script>
+    <script src="js/games/number-grid.js"></script>
+    <script src="js/games/number-puzzle.js"></script>
+    <script src="js/games/symmetry.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
