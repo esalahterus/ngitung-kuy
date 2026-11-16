@@ -30,15 +30,22 @@ Aplikasi web latihan matematika interaktif untuk melatih kecepatan, ketelitian, 
 | Number Puzzle | Slide puzzle 1–15 |
 | Mirror Symmetry | Lengkapi pola cermin kiri–kanan |
 
+
 ## Menjalankan Secara Lokal
 
-Aplikasi ini murni HTML, CSS, dan JavaScript statis. Cukup sajikan foldernya lewat server statis (membuka `index.html` langsung dari `file://` tidak disarankan karena audio dan beberapa API browser bekerja lebih andal lewat HTTP):
+Ngitung Kuy merupakan aplikasi web berbasis HTML, CSS, dan JavaScript yang dapat dijalankan langsung melalui browser tanpa instalasi tambahan.
 
-```bash
-# salah satu
-python3 -m http.server 8000
-npx serve .
-```
+Langkah-langkah:
+
+1. Download file ZIP Ngitung Kuy.
+2. Ekstrak file ZIP tersebut.
+3. Buka folder hasil ekstraksi.
+4. Cari file `index.html`.
+5. Klik dua kali `index.html` untuk menjalankan aplikasi.
+6. Aplikasi akan terbuka melalui browser, seperti Google Chrome atau Microsoft Edge.
+
+Alternatifnya, aplikasi dapat dimainkan secara online melalui GitHub Pages: <https://esalahterus.github.io/ngitung-kuy>
+
 
 Lalu buka <http://localhost:8000>.
 
