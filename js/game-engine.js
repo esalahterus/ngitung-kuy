@@ -1096,23 +1096,27 @@
     initClickSounds() {
       if (this._clickBound) return;
       this._clickBound = true;
-      const SELECTOR = 'button, a[href], [role="button"], select, label.toggle, input[type="checkbox"], .card, .grid-cell, .symmetry-cell, .pz-tile, .mm-card, .option-btn, .keypad-btn, .mode-card';
-      // Tombol keypad numerik memakai suara 'keypad', elemen lain memakai 'click'
+
+      const SELECTOR = 'button, a[href], [role="button"], select, label.toggle, input[type="checkbox], .card, .grid-cell, .symmetry-cell, .pz-tile, .mm-card, .option-btn, .keypad-btn, .mode-card';
+
       const soundFor = (e) => {
-        const el = e.target && e.target.closest ? e.target.closest(SELECTOR) : null;
-        if (!el || el.disabled || el.getAttribute('aria-disabled') === 'true') return null;
+        const el = e.target && e.target.closest
+          ? e.target.closest(SELECTOR)
+          : null;
+
+        if (!el || el.disabled || el.getAttribute('aria-disabled') === 'true') {
+          return null;
+        }
+
         return el.closest('.number-keypad') ? 'keypad' : 'click';
       };
-      document.addEventListener('pointerdown', (e) => {
-        if (e.button !== undefined && e.button !== 0) return;
-        const snd = soundFor(e);
-        if (snd) { this._lastClick = Date.now(); this.play(snd); }
-      }, true);
-      // Aktivasi lewat keyboard (Enter/Spasi) tidak memicu pointerdown
+
+      // Suara hanya diputar ketika elemen benar-benar diklik
       document.addEventListener('click', (e) => {
-        if (e.detail === 0 && Date.now() - this._lastClick > 300) {
-          const snd = soundFor(e);
-          if (snd) this.play(snd);
+        const snd = soundFor(e);
+        if (snd) {
+          this._lastClick = Date.now();
+          this.play(snd);
         }
       }, true);
     }
