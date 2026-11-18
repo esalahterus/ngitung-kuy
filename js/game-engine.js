@@ -1097,27 +1097,21 @@
       if (this._clickBound) return;
       this._clickBound = true;
 
-      const SELECTOR = 'button, a[href], [role="button"], select, label.toggle, input[type="checkbox], .card, .grid-cell, .symmetry-cell, .pz-tile, .mm-card, .option-btn, .keypad-btn, .mode-card';
+      const SELECTOR = 'button, a[href], [role="button"], select, label.toggle, input[type="checkbox"], .card, .grid-cell, .symmetry-cell, .pz-tile, .mm-card, .option-btn, .keypad-btn, .mode-card';
 
       const soundFor = (e) => {
-        const el = e.target && e.target.closest
-          ? e.target.closest(SELECTOR)
-          : null;
+          const el = e.target?.closest?.(SELECTOR);
 
-        if (!el || el.disabled || el.getAttribute('aria-disabled') === 'true') {
-          return null;
-        }
+          if (!el || el.disabled || el.getAttribute('aria-disabled') === 'true') {
+              return null;
+          }
 
-        return el.closest('.number-keypad') ? 'keypad' : 'click';
+          return el.closest('.number-keypad') ? 'keypad' : 'click';
       };
 
-      // Suara hanya diputar ketika elemen benar-benar diklik
       document.addEventListener('click', (e) => {
-        const snd = soundFor(e);
-        if (snd) {
-          this._lastClick = Date.now();
-          this.play(snd);
-        }
+          const snd = soundFor(e);
+          if (snd) this.play(snd);
       }, true);
     }
   };
